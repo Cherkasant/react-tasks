@@ -1,0 +1,12 @@
+.container {
+  padding: 14px 14px;
+  background: #d3d3d4;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 34px;
+  color: rgb(22, 22, 22);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
