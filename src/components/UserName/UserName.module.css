@@ -1,0 +1,19 @@
+.container {
+  padding: 18px 30px;
+  background: #2231aa;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 34px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-left: 1px solid #5360cd;
+}
+
+.letter {
+  padding: 7px 18px;
+  background: #5360cd;
+  border-radius: 2px;
+}

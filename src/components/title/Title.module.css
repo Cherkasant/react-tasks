@@ -1,10 +1,11 @@
 .container {
-  padding: 14px 14px;
+  width: 60px;
+  padding: 10px 10px;
   background: #d3d3d4;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 34px;
-  color: rgb(22, 22, 22);
+  font-size: 16px;
+  line-height: 20px;
+  color: #313037;
   display: flex;
   justify-content: center;
   align-items: center;

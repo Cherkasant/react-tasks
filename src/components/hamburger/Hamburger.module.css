@@ -1,12 +1,12 @@
-.container {
-  padding: 14px 14px;
-  background: #d3d3d4;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 34px;
-  color: rgb(22, 22, 22);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+.button {
+  box-sizing: border-box;
+  width: 84px;
+  height: 84px;
+  padding: 30px;
+  cursor: pointer;
+  background: url('./assets/burger_icon.svg') center no-repeat;
+  border-right: 1px solid #5360cd;
+}
+.button:hover {
+  background: url('./assets/escape_icon.svg') center no-repeat;
 }
