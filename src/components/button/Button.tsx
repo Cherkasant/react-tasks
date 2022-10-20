@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import classnames from 'classnames';
 //@ts-ignore
 
@@ -12,7 +12,7 @@ export enum ButtonTypes {
 }
 
 type ButtonProps = {
-  title: string;
+  title: string | ReactElement;
   type: ButtonTypes;
   onClick: () => void;
   className?: string;
@@ -28,6 +28,7 @@ const Button: FC<ButtonProps> = (props) => {
       className={classnames(styles.button, buttonClassName, className, {
         [styles.disabled]: !!disabled,
       })}
+      onClick={onClick}
     >
       {title}
     </div>
