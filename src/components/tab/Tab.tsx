@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 //@ts-ignore
 import styles from './Tab.module.css';
 import classnames from 'classnames';
-import tab from '.';
 
 enum Tabs {
   All = 'all',
@@ -32,15 +31,10 @@ const Tab: FC<TabProps> = ({ disabled }) => {
           <div
             key={tab.key}
             onClick={() => clickTab(tab.key)}
-            className={classnames(
-              styles.tab,
-              {
-                [styles.disabled]: tab.key != activeTab,
-              },
-              {
-                [styles.active]: tab.key === activeTab,
-              }
-            )}
+            className={classnames(styles.tab, {
+              [styles.active]: tab.key === activeTab,
+              [styles.disabled]: tab.key != activeTab,
+            })}
           >
             {tab.name}
           </div>

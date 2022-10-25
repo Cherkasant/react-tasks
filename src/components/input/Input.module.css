@@ -1,8 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
-  padding: 18px 434px 18px 20px;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
+  padding: 18px;
+  flex-shrink: 0;
 }
 .input:focus {
   color: #8d8e97;

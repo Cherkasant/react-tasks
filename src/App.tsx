@@ -9,52 +9,27 @@ import Tab from './components/tab/Tab';
 import Input from './components/input/Input';
 import classnames from 'classnames';
 import { BurgerIcon, CloseIcon } from './Assets/icons';
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
+import RegistrationConfirm from './Pages/RegistrationConfirm';
+import Success from './Pages/Success';
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  const activeTabFunction = (index: number) => {
-    setActiveTab(index);
-  };
-  const [inputValue, setInputValue] = useState('');
+  // const [activeTab, setActiveTab] = useState(1);
+  // const activeTabFunction = (index: number) => {
+  //   setActiveTab(index);
+  // };
+  // const [inputValue, setInputValue] = useState('');
 
-  const onChange = (value: string) => {
-    setInputValue(value);
-  };
+  // const onChange = (value: string) => {
+  //   setInputValue(value);
+  // };
 
-  const [isOpened, SetOpened] = useState(false);
+  // const [isOpened, SetOpened] = useState(false);
 
   return (
     <div className={styles.container}>
-      <nav className={styles.nav}>
-        <div>
-          <Button
-            className={styles.burger}
-            title={!isOpened ? <BurgerIcon /> : <CloseIcon />}
-            type={ButtonTypes.Primary}
-            onClick={() => SetOpened(!isOpened)}
-          />
-        </div>
-
-        <div className={styles.block}>
-          <Button
-            title={''}
-            type={ButtonTypes.Search}
-            onClick={() => alert('search')}
-          />
-          <UserName username="Artem_Malkin" />
-        </div>
-      </nav>
-      <Title name={'Sign in'} />
-
-      <Tab disabled={true} />
-
-      <Input
-        value={inputValue}
-        onChange={onChange}
-        placeholder={'Placeholder'}
-        title={'Title'}
-        error={'error'}
-      />
+      <Success />
     </div>
   );
 };
