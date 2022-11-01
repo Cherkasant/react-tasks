@@ -3,17 +3,24 @@ import React, { FC, useState } from 'react';
 //@ts-ignore
 
 import styles from './CardList.module.css';
-import { CardListType } from '../../Constants/@types';
+import { CardListType, Theme } from '../../Constants/@types';
 import Card from '../Card';
 import { CardSize } from '../Card/Card';
+import classnames from 'classnames';
+import { useThemeContext } from '../../Context/Theme';
 
 type CardListProps = {
   cardsList: CardListType | null;
 };
 
 const CardList: FC<CardListProps> = ({ cardsList }) => {
+  const { theme } = useThemeContext();
   return cardsList && cardsList.length > 0 ? (
-    <div className={styles.container}>
+    <div
+      className={classnames(styles.container, {
+        [styles.darkTheme]: theme === Theme.Dark,
+      })}
+    >
       <div className={styles.leftSide}>
         <Card card={cardsList[0]} size={CardSize.Large} />
         <div className={styles.mediumContainer}>

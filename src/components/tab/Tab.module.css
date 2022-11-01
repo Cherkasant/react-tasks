@@ -19,6 +19,7 @@
   color: #313037;
   padding: 0 40px 24px 40px;
 }
+
 .tab:hover {
   color: #2231aa;
 }
@@ -27,4 +28,15 @@
 }
 .active {
   border-bottom: 2px solid #313037;
+}
+.darkContainer {
+  background: #313037;
+}
+.darkContainer .disabled {
+  color: #ffffff;
+}
+
+.darkContainer .active {
+  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
 }

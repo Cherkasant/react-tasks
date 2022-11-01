@@ -4,7 +4,8 @@ import React, { FC } from 'react';
 import styles from './Card.module.css';
 import classnames from 'classnames';
 import { BookmarkIcon, MoreIcon, UpIcon, DownIcon } from '../../Assets/icons';
-import { CardType } from '../../Constants/@types';
+import { CardType, Theme } from '../../Constants/@types';
+import { useThemeContext } from '../../Context/Theme';
 
 export enum CardSize {
   Large = 'large',
@@ -18,6 +19,8 @@ type CardProps = {
 };
 
 const Card: FC<CardProps> = ({ card, size }) => {
+  const { theme } = useThemeContext();
+
   const { title, text, image, date } = card;
 
   const isLarge = size === CardSize.Large;
@@ -29,6 +32,7 @@ const Card: FC<CardProps> = ({ card, size }) => {
       className={classnames(styles.container, {
         [styles.mediumContainer]: isMedium,
         [styles.smallContainer]: isSmall,
+        [styles.darkContainer]: theme === Theme.Dark,
       })}
     >
       <div
@@ -43,6 +47,7 @@ const Card: FC<CardProps> = ({ card, size }) => {
             <div
               className={classnames(styles.title, {
                 [styles.smallTitle]: !isLarge,
+                [styles.whiteTitle]: theme === Theme.Dark,
               })}
             >
               {title}
@@ -68,7 +73,11 @@ const Card: FC<CardProps> = ({ card, size }) => {
             <DownIcon />
           </div>
         </div>
-        <div className={styles.iconsContainer}>
+        <div
+          className={classnames(styles.iconsContainer, {
+            [styles.whiteIcon]: theme === Theme.Dark,
+          })}
+        >
           <div className={styles.iconButton}>
             <BookmarkIcon />
           </div>
