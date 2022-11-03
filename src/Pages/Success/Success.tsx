@@ -12,7 +12,7 @@ const Success = () => {
         <div className={styles.inputsContainer}>
           <div className={styles.forgotPassword}>
             {'Email confirmed.'}
-            <br /> {'Your registration is now completed'}
+            <div>{'Your registration is now completed'}</div>
           </div>
           <Button
             title={'Go to home'}

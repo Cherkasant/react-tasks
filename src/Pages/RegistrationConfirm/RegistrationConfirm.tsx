@@ -12,12 +12,11 @@ const RegistrationConfirmation = () => {
       <>
         <div className={styles.inputsContainer}>
           <div className={styles.forgotPassword}>
-            <p>
-              {'Please activate your account with the activation'} <br />
-              {'link in the email'} <strong>{'example@gmail.com.'}</strong>
-              <br />
-              {'Please, check your email'}
-            </p>
+            <div>{'Please activate your account with the activation'}</div>
+            <div>
+              {'link in the email'} <span>{'example@gmail.com.'}</span>
+            </div>
+            <div> {'Please, check your email'}</div>
           </div>
           <Button
             title={'Go to home'}
