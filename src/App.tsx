@@ -16,7 +16,8 @@ import Success from './Pages/Success';
 import Card from './components/Card';
 import { CardSize } from './components/Card/Card';
 import CardList from './components/CardList';
-import { CardListType, CardType } from './Constants/@types';
+import { CardListType, CardType, Theme } from './Constants/@types';
+import ThemeProvider from './Context/Theme/ThemeProvider';
 
 const App = () => {
   // const [activeTab, setActiveTab] = useState(1);
@@ -62,10 +63,19 @@ const App = () => {
     setCardsList(MOCK_CARDS_LIST);
   }, []);
 
+  const [theme, setTheme] = useState(Theme.Dark);
+  const onChangeTheme = (value: Theme) => {
+    setTheme(value);
+  };
+
   return (
-    <div className={styles.container}>
-      <CardList cardsList={cardsList} />
-    </div>
+    <ThemeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      <div className={styles.container}>
+        {/* <CardList cardsList={cardsList} /> */}
+        {/* <SignIn /> */}
+        <SignUp />
+      </div>
+    </ThemeProvider>
   );
 };
 

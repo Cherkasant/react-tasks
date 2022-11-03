@@ -8,6 +8,10 @@
   box-sizing: border-box;
   justify-content: space-between;
 }
+.darkContainer svg path {
+  fill: #ffffff;
+}
+
 .cardFooter {
   display: flex;
   justify-content: space-between;
@@ -40,6 +44,9 @@
   line-height: 44px;
   color: #313037;
 }
+.whiteTitle {
+  color: #ffffff;
+}
 
 .title:hover {
   cursor: pointer;
@@ -61,10 +68,12 @@
 .iconButton {
   display: flex;
 }
+.whiteIcon {
+  color: #ffffff;
+}
 .iconButton:hover {
   cursor: pointer;
 }
-
 .mediumContainer {
   width: 352px;
 }
