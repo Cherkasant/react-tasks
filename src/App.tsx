@@ -18,6 +18,7 @@ import { CardSize } from './components/Card/Card';
 import CardList from './components/CardList';
 import { CardListType, CardType, Theme } from './Constants/@types';
 import ThemeProvider from './Context/Theme/ThemeProvider';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 const App = () => {
   // const [activeTab, setActiveTab] = useState(1);
@@ -74,6 +75,7 @@ const App = () => {
         {/* <CardList cardsList={cardsList} /> */}
         {/* <SignIn /> */}
         <SignUp />
+        <ThemeSwitcher />
       </div>
     </ThemeProvider>
   );
