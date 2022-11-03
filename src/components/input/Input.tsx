@@ -18,7 +18,7 @@ const Input: FC<InputProps> = (props) => {
     onChange(event.target.value);
   };
   return (
-    <div>
+    <div className={styles.container}>
       {title && <div className={styles.title}>{title}</div>}
       <input
         className={styles.input}
