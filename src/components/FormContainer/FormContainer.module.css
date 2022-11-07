@@ -1,11 +1,12 @@
 .container {
   flex: 1;
   display: flex;
-  padding: 72px 400px;
+  padding: 0 400px;
   flex-direction: column;
   background-color: #f3f3f3;
   gap: 72px;
   height: 100%;
+  margin-bottom: 72px;
 }
 .goBackButton {
   font-weight: 400;

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-//@ts-ignore
 import styles from './Card.module.css';
 import classnames from 'classnames';
 import { BookmarkIcon, MoreIcon, UpIcon, DownIcon } from '../../Assets/icons';
