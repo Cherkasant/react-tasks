@@ -72,8 +72,9 @@
 .whiteIcon {
   color: #ffffff;
 }
-.iconButton:hover {
+.iconButton:hover,.iconButton:hover>svg path {
   cursor: pointer;
+  fill:#2231aa;
 }
 .mediumContainer {
   width: 352px;

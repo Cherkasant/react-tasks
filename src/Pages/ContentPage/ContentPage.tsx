@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { BookmarkIcon, DownIcon, UpIcon } from "../../Assets/icons";
 import Button, { ButtonTypes } from "../../components/button";
 import Title from "../../components/title";
 import styles from "./ContentPage.module.css";
-import { CardType, Theme } from "../../Constants/@types";
+import { CardType } from "../../Constants/@types";
 
 type ContentPageProps = {
   card: CardType;
