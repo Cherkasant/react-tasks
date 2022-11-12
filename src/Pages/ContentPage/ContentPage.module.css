@@ -65,11 +65,13 @@
 .iconsContainer {
   display: flex;
 }
+
 .footerContainer {
   display: flex;
   justify-content: space-between;
   padding: 0;
 }
+
 .block {
   display: flex;
   flex-direction: column;
@@ -86,4 +88,14 @@
   line-height: 24px;
   padding: 16px 32px;
   color: #313037;
+}
+
+.likeButtonHover:hover,.favouriteButton:hover,.likeButtonHover:hover>svg path,.favouriteButton:hover>svg path{
+  background: #5360CD;
+  fill:#FFFFFF ;
+  color:#FFFFFF;
+}
+.dislikeButtonHover:hover,.dislikeButtonHover:hover>svg path {
+  background: #FD3419;
+  fill:#FFFFFF ;
 }
