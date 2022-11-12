@@ -42,7 +42,8 @@ const MOCK_CARDS_LIST = [
   },
   {
     id: 2,
-    image: "https://live.staticflickr.com/65535/51716842640_dd8a1646ab_b.jpg",
+    image:
+      "https://blog.comfy.ua/wp-content/uploads/2017/03/Papka---Foto---Samyie-udivitelnyie-kosmicheskie-otkryitiya-za-vsyu-istoriyu-----Mlechnyiy-put..jpg",
     text: "Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.",
     date: "2021-12-12",
     lesson_num: 0,
@@ -52,7 +53,8 @@ const MOCK_CARDS_LIST = [
   },
   {
     id: 3,
-    image: "https://live.staticflickr.com/65535/51716842640_dd8a1646ab_b.jpg",
+    image:
+      "https://blog.comfy.ua/wp-content/uploads/2017/03/Papka---Foto---Samyie-udivitelnyie-kosmicheskie-otkryitiya-za-vsyu-istoriyu-----Bolshoy-vzryiv.jpg",
     text: "Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.",
     date: "2021-12-12",
     lesson_num: 0,
@@ -62,7 +64,8 @@ const MOCK_CARDS_LIST = [
   },
   {
     id: 4,
-    image: "https://live.staticflickr.com/65535/51716842640_dd8a1646ab_b.jpg",
+    image:
+      "https://blog.comfy.ua/wp-content/uploads/2017/03/Papka---Foto---Samyie-udivitelnyie-kosmicheskie-otkryitiya-za-vsyu-istoriyu-----ogromnyiy-teleskop..jpg",
     text: "Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.",
     date: "2021-12-12",
     lesson_num: 0,
@@ -72,7 +75,8 @@ const MOCK_CARDS_LIST = [
   },
   {
     id: 5,
-    image: "https://live.staticflickr.com/65535/51716842640_dd8a1646ab_b.jpg",
+    image:
+      "https://blog.comfy.ua/wp-content/uploads/2017/03/Papka---Foto---Samyie-udivitelnyie-kosmicheskie-otkryitiya-za-vsyu-istoriyu-----Tumannost-Oriona..jpg",
     text: "Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.",
     date: "2021-12-12",
     lesson_num: 0,
@@ -82,7 +86,8 @@ const MOCK_CARDS_LIST = [
   },
   {
     id: 6,
-    image: "https://live.staticflickr.com/65535/51716842640_dd8a1646ab_b.jpg",
+    image:
+      "https://blog.comfy.ua/wp-content/uploads/2017/03/Papka---Foto---Samyie-udivitelnyie-kosmicheskie-otkryitiya-za-vsyu-istoriyu-----kosmicheskiy-turizm..jpg",
     text: "Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.",
     date: "2021-12-12",
     lesson_num: 0,
