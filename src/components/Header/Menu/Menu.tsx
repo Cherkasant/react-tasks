@@ -8,7 +8,7 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import UserName from '../../UserName';
 
-export const isLoggedIn = true;
+export const isLoggedIn = false;
 
 const Menu = () => {
   const navButtons = useMemo(
