@@ -1,0 +1,14 @@
+.icon {
+    position: absolute;
+    left: 95.37%;
+    right: 2.37%;
+    top: 3.06%;
+    bottom: 93.55%;
+    cursor: pointer;
+}
+
+.image {
+    width:320px;
+    height: 320px;
+}
+

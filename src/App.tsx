@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
-import { Theme } from './Constants/@types';
-import ThemeProvider from './Context/Theme/ThemeProvider';
-import Router from './Pages/Router';
+import { Theme } from "./Constants/@types";
+import ThemeProvider from "./Context/Theme/ThemeProvider";
+import Router from "./Pages/Router";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { store } from "./Redux/store";
+import { setTheme } from "./Redux/Reducers/themeReducer";
+import ThemeSelectors from "./Redux/Selectors/themeSelectors";
 
 const App = () => {
-  const [theme, setTheme] = useState(Theme.Light);
+  const dispatch = useDispatch();
+  const theme = useSelector(ThemeSelectors.getTheme);
+
   const onChangeTheme = (value: Theme) => {
-    setTheme(value);
+    dispatch(setTheme(value));
   };
 
   return (
@@ -17,4 +23,12 @@ const App = () => {
   );
 };
 
-export default App;
+const AppWithStore = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default AppWithStore;

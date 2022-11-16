@@ -1,22 +1,23 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Blog from '../Blog';
-import ContentPage from '../ContentPage';
-import PagesWrapper from '../PagesWrapper';
-import RegistrationConfirm from '../RegistrationConfirm';
-import SignIn from '../SignIn';
-import SignUp from '../SignUp';
-import Success from '../Success';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Blog from "../Blog";
+import PagesWrapper from "../PagesWrapper";
+import RegistrationConfirm from "../RegistrationConfirm";
+import SignIn from "../SignIn";
+import SignUp from "../SignUp";
+import Success from "../Success";
+import ResetPassword from "../ResetPassword";
 
 export enum PathNames {
-  Home = '/',
-  AddPost = '/posts/add',
-  SignIn = '/sign-in',
-  SignUp = '/sign-up',
-  RegistrationConfirmation = '/sign-up/confirm',
-  RegistrationSuccess = '/sign-up/success',
-  Search = '/search',
-  ContentPage = '/content',
+  Home = "/",
+  AddPost = "/posts/add",
+  SignIn = "/sign-in",
+  SignUp = "/sign-up",
+  RegistrationConfirmation = "/sign-up/confirm",
+  RegistrationSuccess = "/sign-up/success",
+  Search = "/search",
+  ContentPage = "/content",
+  ResetPassword = "/reset",
 }
 
 const Router = () => {
@@ -33,6 +34,7 @@ const Router = () => {
             element={<RegistrationConfirm />}
           />
           <Route path={PathNames.RegistrationSuccess} element={<Success />} />
+          <Route path={PathNames.ResetPassword} element={<ResetPassword />} />
         </Route>
 
         <Route path="*" element={<Navigate to={PathNames.SignIn} />} />

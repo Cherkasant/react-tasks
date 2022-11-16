@@ -1,15 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import styles from './Card.module.css';
-import classnames from 'classnames';
-import { BookmarkIcon, MoreIcon, UpIcon, DownIcon } from '../../Assets/icons';
-import { CardType, Theme } from '../../Constants/@types';
-import { useThemeContext } from '../../Context/Theme';
+import styles from "./Card.module.css";
+import classnames from "classnames";
+import { BookmarkIcon, MoreIcon, UpIcon, DownIcon } from "../../Assets/icons";
+import { CardType, Theme } from "../../Constants/@types";
+import { useThemeContext } from "../../Context/Theme";
+import { useDispatch } from "react-redux";
+import {
+  setSelectedImage,
+  setSelectedPosts,
+} from "../../Redux/Reducers/postsReducer";
 
 export enum CardSize {
-  Large = 'large',
-  Medium = 'medium',
-  Small = 'small',
+  Large = "large",
+  Medium = "medium",
+  Small = "small",
 }
 
 type CardProps = {
@@ -19,6 +24,15 @@ type CardProps = {
 
 const Card: FC<CardProps> = ({ card, size }) => {
   const { theme } = useThemeContext();
+  const dispatch = useDispatch();
+
+  const onMoreIconClick = () => {
+    dispatch(setSelectedPosts(card));
+  };
+
+  const onImageClick = () => {
+    dispatch(setSelectedImage(image));
+  };
 
   const { title, text, image, date } = card;
 
@@ -55,8 +69,9 @@ const Card: FC<CardProps> = ({ card, size }) => {
           {isLarge && <div className={styles.description}>{text}</div>}
         </div>
         <img
+          onClick={onImageClick}
           src={image}
-          alt={''}
+          alt={""}
           className={classnames(styles.image, {
             [styles.mediumImage]: isMedium,
             [styles.smallImage]: isSmall,
@@ -80,7 +95,7 @@ const Card: FC<CardProps> = ({ card, size }) => {
           <div className={styles.iconButton}>
             <BookmarkIcon />
           </div>
-          <div className={styles.iconButton}>
+          <div className={styles.iconButton} onClick={onMoreIconClick}>
             <MoreIcon />
           </div>
         </div>
