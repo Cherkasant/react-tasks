@@ -1,0 +1,89 @@
+.container {
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 300px;
+  gap: 48px;
+}
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.postContainer {
+  display: flex;
+  gap: 8px;
+}
+.pageName {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #313037;
+}
+.separator {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #8d8e97;
+}
+
+.postName {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8d8e97;
+}
+
+.contentContainer {
+  padding: 0 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  align-self: center;
+}
+.mainContainer {
+  padding: 0 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  color: #313037;
+}
+.iconsContainer {
+  display: flex;
+}
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  padding: 0 64px;
+
+  gap: 48px;
+}
+
+.favouriteButton {
+  display: flex;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 16px 32px;
+  color: #313037;
+}

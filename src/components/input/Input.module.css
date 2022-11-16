@@ -9,6 +9,8 @@
   line-height: 20px;
   padding: 18px;
   flex-shrink: 0;
+  resize: vertical;
+  outline: none;
 }
 .input:focus {
   color: #8d8e97;
@@ -34,4 +36,7 @@
   line-height: 20px;
   color: #fd3419;
   margin-top: 16px;
+}
+.darkContainer {
+  color: #ffffff;
 }

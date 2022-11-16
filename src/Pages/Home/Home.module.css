@@ -1,0 +1,8 @@
+.container {
+  flex: 1;
+  height: 100%;
+  margin: 0 auto;
+}
+.titleMargin {
+  margin-bottom: 40px;
+}

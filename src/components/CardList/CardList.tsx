@@ -1,7 +1,5 @@
 import React, { FC, useState } from 'react';
 
-//@ts-ignore
-
 import styles from './CardList.module.css';
 import { CardListType, Theme } from '../../Constants/@types';
 import Card from '../Card';

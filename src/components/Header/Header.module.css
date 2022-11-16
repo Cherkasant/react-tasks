@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 84px;
+  background: #2231aa;
+  margin-bottom: 72px;
+}
+.burgerButton {
+  padding: 30px;
+}
+.searchButton {
+  padding: 30px;
+  border-right: 1px solid #5360cd;
+  border-left: 1px solid #5360cd;
+}
+
+.searchButtons {
+  display: flex;
+}
+
+.inputContainer {
+  width: 100%;
+}
+.customInput {
+  background: #5360cd !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  padding: 30px !important;
+  border: none;
+}

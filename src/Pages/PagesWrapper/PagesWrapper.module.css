@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f3f3f3;
+  height: 100%;
+  overflow: auto;
+}
+.darkContainer {
+  background: #313037;
+}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-//@ts-ignore
 import styles from './SignUp.module.css';
-import classnames from 'classnames';
 import FormContainer from '../../components/FormContainer';
 import Input from '../../components/input/Input';
 import Button, { ButtonTypes } from '../../components/button/Button';
+import { PathNames } from '../Router/Router';
+import { NavLink } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -49,7 +49,10 @@ const SignUp = () => {
           className={styles.button}
         />
         <div className={styles.signUpRedirectContainer}>
-          {'Don’t have an account?'} <span>{'Sign In'}</span>
+          {'Don’t have an account?'}{' '}
+          <NavLink to={PathNames.SignIn} className={styles.redirectButton}>
+            {'Sign In'}
+          </NavLink>
         </div>
       </>
     </FormContainer>

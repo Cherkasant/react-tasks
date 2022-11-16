@@ -6,3 +6,5 @@ export * from './UpIcon';
 export * from './MoreIcon';
 export * from './MoonIcon';
 export * from './SunIcon';
+export * from './SearchIcon';
+export * from './LogInIcon';
