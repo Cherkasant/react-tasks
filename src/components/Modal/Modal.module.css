@@ -1,0 +1,32 @@
+.modal {
+    background: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.overlay {
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(38, 34, 47, 0.5);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.icon {
+    display: flex;
+    align-self: flex-end;
+    padding: 20px;
+    margin-bottom: 45px;
+    cursor: pointer;
+}
+

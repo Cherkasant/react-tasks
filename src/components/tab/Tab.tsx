@@ -1,30 +1,22 @@
-import React, { FC, useState } from 'react';
-//@ts-ignore
-import styles from './Tab.module.css';
-import classnames from 'classnames';
-import { useThemeContext } from '../../Context/Theme';
-import { Theme } from '../../Constants/@types';
+import React, { FC, useState } from "react";
+import styles from "./Tab.module.css";
+import classnames from "classnames";
+import { useThemeContext } from "../../Context/Theme";
+import { Tabs, Theme } from "../../Constants/@types";
 
-enum Tabs {
-  All = 'all',
-  Favourites = 'myFavourites',
-  Popular = 'popular',
-}
 const TABS_NAMES = [
-  { name: 'All', key: Tabs.All },
-  { name: 'My Favourites', key: Tabs.Favourites },
-  { name: 'Popular', key: Tabs.Popular },
+  { name: "All", key: Tabs.All },
+  { name: "My Favourites", key: Tabs.Favourites },
+  { name: "Popular", key: Tabs.Popular },
 ];
 
 type TabProps = {
+  activeTab: Tabs;
+  onSelectTab: (tab: Tabs) => void;
   disabled?: boolean;
 };
 
-const Tab: FC<TabProps> = ({ disabled }) => {
-  const [activeTab, setActiveTab] = useState(Tabs.All);
-  const clickTab = (tab: Tabs) => {
-    setActiveTab(tab);
-  };
+const Tab: FC<TabProps> = ({ disabled, activeTab, onSelectTab }) => {
   const { theme } = useThemeContext();
 
   return (
@@ -37,7 +29,7 @@ const Tab: FC<TabProps> = ({ disabled }) => {
         return (
           <div
             key={tab.key}
-            onClick={() => clickTab(tab.key)}
+            onClick={() => onSelectTab(tab.key)}
             className={classnames(styles.tab, {
               [styles.active]: tab.key === activeTab,
               [styles.disabled]: tab.key !== activeTab,
