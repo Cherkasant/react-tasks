@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
 }
-.iconsContainer {
+.iconsContainer,.saveButton {
   display: flex;
   gap: 24px;
 }
@@ -115,4 +115,15 @@
   width: 96px;
   height: 96px;
 }
+.darkStyleSaveIcon svg path{
+  stroke: #ffffff;
+  fill: none;
+}
+.saveButton:hover,.saveButton:hover>svg path {
+  cursor: pointer;
+  stroke:#2231aa;
+}
 
+.whiteFill svg path {
+  fill:#ffffff;
+}

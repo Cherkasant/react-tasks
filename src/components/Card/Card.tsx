@@ -137,8 +137,10 @@ const Card: FC<CardProps> = ({ card, size, isFromModal }) => {
           })}
         >
           <div
-            className={classnames(styles.iconButton, {
+            className={classnames(styles.saveButton, {
               [styles.favouritePost]: isFavourite,
+              [styles.darkStyleSaveIcon]: theme === Theme.Dark,
+              [styles.whiteFill]: isFavourite && theme !== Theme.Light,
             })}
             onClick={onSaveIconClick}
           >
