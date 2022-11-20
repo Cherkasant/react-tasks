@@ -79,11 +79,9 @@ const postsSlice = createSlice({
       const savedPostsIndex = state.savedPosts.findIndex(
         (post) => post.id === card.id
       );
-      if (savedPostsIndex === -1) {
-        state.savedPosts.push(card);
-      } else {
-        state.savedPosts.splice(savedPostsIndex, 1);
-      }
+      savedPostsIndex === -1
+        ? state.savedPosts.push(card)
+        : state.savedPosts.splice(savedPostsIndex, 1);
     },
   },
 });
