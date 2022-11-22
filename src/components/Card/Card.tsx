@@ -2,14 +2,17 @@ import React, { FC } from "react";
 
 import styles from "./Card.module.css";
 import classnames from "classnames";
-import { BookmarkIcon, MoreIcon, UpIcon, DownIcon } from "../../Assets/icons";
-import { CardType, Theme } from "../../Constants/@types";
+import { BookmarkIcon, DownIcon, MoreIcon, UpIcon } from "../../Assets/icons";
+import { CardType, LikeStatus, Theme } from "../../Constants/@types";
 import { useThemeContext } from "../../Context/Theme";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  setLikedStatus,
+  setSavedPosts,
   setSelectedImage,
   setSelectedPosts,
 } from "../../Redux/Reducers/postsReducer";
+import PostsSelectors from "../../Redux/Selectors/postsSelectors";
 
 export enum CardSize {
   Large = "large",
@@ -20,9 +23,10 @@ export enum CardSize {
 type CardProps = {
   card: CardType;
   size: CardSize;
+  isFromModal?: boolean;
 };
 
-const Card: FC<CardProps> = ({ card, size }) => {
+const Card: FC<CardProps> = ({ card, size, isFromModal }) => {
   const { theme } = useThemeContext();
   const dispatch = useDispatch();
 
@@ -33,6 +37,22 @@ const Card: FC<CardProps> = ({ card, size }) => {
   const onImageClick = () => {
     dispatch(setSelectedImage(image));
   };
+
+  const onLikeStatusClick = (likeStatus: LikeStatus) => () => {
+    dispatch(setLikedStatus({ card, likeStatus }));
+  };
+
+  const likedPosts = useSelector(PostsSelectors.getLikedPosts);
+  const dislikedPosts = useSelector(PostsSelectors.getDislikedPosts);
+  const isLiked = likedPosts.findIndex((post) => post.id === card.id) > -1;
+  const isDisliked =
+    dislikedPosts.findIndex((post) => post.id === card.id) > -1;
+
+  const onSaveIconClick = () => {
+    dispatch(setSavedPosts(card));
+  };
+  const savedPosts = useSelector(PostsSelectors.getSavedPosts);
+  const isFavourite = savedPosts.findIndex((post) => post.id === card.id) > -1;
 
   const { title, text, image, date } = card;
 
@@ -69,7 +89,7 @@ const Card: FC<CardProps> = ({ card, size }) => {
           {isLarge && <div className={styles.description}>{text}</div>}
         </div>
         <img
-          onClick={onImageClick}
+          onClick={!isFromModal ? onImageClick : undefined}
           src={image}
           alt={""}
           className={classnames(styles.image, {
@@ -80,11 +100,35 @@ const Card: FC<CardProps> = ({ card, size }) => {
       </div>
       <div className={styles.cardFooter}>
         <div className={styles.iconsContainer}>
-          <div className={styles.iconButton}>
+          <div
+            className={styles.iconButton}
+            onClick={onLikeStatusClick(LikeStatus.Like)}
+          >
             <UpIcon />
+            {isLiked && (
+              <div
+                className={classnames(styles.likeNumber, {
+                  [styles.whiteNumber]: theme === Theme.Dark,
+                })}
+              >
+                1
+              </div>
+            )}
           </div>
-          <div className={styles.iconButton}>
+          <div
+            className={styles.iconButton}
+            onClick={onLikeStatusClick(LikeStatus.Dislike)}
+          >
             <DownIcon />
+            {isDisliked && (
+              <div
+                className={classnames(styles.likeNumber, {
+                  [styles.whiteNumber]: theme === Theme.Dark,
+                })}
+              >
+                1
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -92,7 +136,14 @@ const Card: FC<CardProps> = ({ card, size }) => {
             [styles.whiteIcon]: theme === Theme.Dark,
           })}
         >
-          <div className={styles.iconButton}>
+          <div
+            className={classnames(styles.saveButton, {
+              [styles.favouritePost]: isFavourite,
+              [styles.darkStyleSaveIcon]: theme === Theme.Dark,
+              [styles.whiteFill]: isFavourite && theme !== Theme.Light,
+            })}
+            onClick={onSaveIconClick}
+          >
             <BookmarkIcon />
           </div>
           <div className={styles.iconButton} onClick={onMoreIconClick}>

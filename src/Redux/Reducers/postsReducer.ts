@@ -1,11 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CardType } from "../../Constants/@types";
+import {
+  CardListType,
+  CardType,
+  LikeStatus,
+  SetLikeStatusPayload,
+} from "../../Constants/@types";
 
 type PostReducerState = {
   selectedPost: CardType | null;
   isSelectedPostModalIsOpened: boolean;
   selectedImage: string;
   isSelectedImageModalIsOpened: boolean;
+  likedPosts: CardListType;
+  dislikedPosts: CardListType;
+  savedPosts: CardListType;
 };
 
 const initialState: PostReducerState = {
@@ -13,6 +21,9 @@ const initialState: PostReducerState = {
   isSelectedPostModalIsOpened: false,
   selectedImage: "",
   isSelectedImageModalIsOpened: false,
+  likedPosts: [],
+  dislikedPosts: [],
+  savedPosts: [],
 };
 
 const postsSlice = createSlice({
@@ -39,6 +50,39 @@ const postsSlice = createSlice({
         state.selectedImage = "";
       }
     },
+    setLikedStatus: (state, action: PayloadAction<SetLikeStatusPayload>) => {
+      const { card, likeStatus } = action.payload;
+      const isLike = likeStatus === LikeStatus.Like;
+      const dislikedIndex = state.dislikedPosts.findIndex(
+        (post) => post.id === card.id
+      );
+      const likedIndex = state.likedPosts.findIndex(
+        (post) => post.id === card.id
+      );
+
+      const mainArrayKey = isLike ? "likedPosts" : "dislikedPosts";
+      const secondaryArrayKey = isLike ? "dislikedPosts" : "likedPosts";
+      const mainIndex = isLike ? likedIndex : dislikedIndex;
+      const secondaryIndex = isLike ? dislikedIndex : likedIndex;
+
+      if (mainIndex === -1) {
+        state[mainArrayKey].push(card);
+      } else {
+        state[mainArrayKey].splice(mainIndex, 1);
+      }
+      if (secondaryIndex > -1) {
+        state[secondaryArrayKey].splice(secondaryIndex, 1);
+      }
+    },
+    setSavedPosts: (state, action: PayloadAction<CardType>) => {
+      const { ...card } = action.payload;
+      const savedPostsIndex = state.savedPosts.findIndex(
+        (post) => post.id === card.id
+      );
+      savedPostsIndex === -1
+        ? state.savedPosts.push(card)
+        : state.savedPosts.splice(savedPostsIndex, 1);
+    },
   },
 });
 
@@ -47,6 +91,8 @@ export const {
   setSelectedPostVisible,
   setSelectedImage,
   setSelectedImageVisible,
+  setLikedStatus,
+  setSavedPosts,
 } = postsSlice.actions;
 const postsReducer = postsSlice.reducer;
 export default postsReducer;

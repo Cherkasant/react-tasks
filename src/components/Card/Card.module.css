@@ -16,9 +16,15 @@
   display: flex;
   justify-content: space-between;
 }
-.iconsContainer {
+.iconsContainer,.saveButton {
   display: flex;
   gap: 24px;
+}
+.likeNumber {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #313037;
 }
 .bodyContainer {
   display: flex;
@@ -68,14 +74,19 @@
 }
 .iconButton {
   display: flex;
+  gap:8px;
 }
-.whiteIcon {
+.whiteIcon,.whiteNumber {
   color: #ffffff;
 }
 .iconButton:hover,.iconButton:hover>svg path {
   cursor: pointer;
   fill:#2231aa;
 }
+.favouritePost svg path{
+  fill: #313037;
+}
+
 .mediumContainer {
   width: 352px;
 }
@@ -103,4 +114,16 @@
 .smallImage {
   width: 96px;
   height: 96px;
+}
+.darkStyleSaveIcon svg path{
+  stroke: #ffffff;
+  fill: none;
+}
+.saveButton:hover,.saveButton:hover>svg path {
+  cursor: pointer;
+  stroke:#2231aa;
+}
+
+.whiteFill svg path {
+  fill:#ffffff;
 }

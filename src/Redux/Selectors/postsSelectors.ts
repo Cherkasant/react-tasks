@@ -7,4 +7,7 @@ export default {
   getSelectedImage: (state: RootState) => state.postsReducer.selectedImage,
   getSelectedImageVisible: (state: RootState) =>
     state.postsReducer.isSelectedImageModalIsOpened,
+  getLikedPosts: (state: RootState) => state.postsReducer.likedPosts,
+  getDislikedPosts: (state: RootState) => state.postsReducer.dislikedPosts,
+  getSavedPosts: (state: RootState) => state.postsReducer.savedPosts,
 };
