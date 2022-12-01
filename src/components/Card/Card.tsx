@@ -13,6 +13,7 @@ import {
   setSelectedPosts,
 } from "../../Redux/Reducers/postsReducer";
 import PostsSelectors from "../../Redux/Selectors/postsSelectors";
+import { useNavigate } from "react-router-dom";
 
 export enum CardSize {
   Large = "large",
@@ -54,7 +55,12 @@ const Card: FC<CardProps> = ({ card, size, isFromModal }) => {
   const savedPosts = useSelector(PostsSelectors.getSavedPosts);
   const isFavourite = savedPosts.findIndex((post) => post.id === card.id) > -1;
 
-  const { title, text, image, date } = card;
+  const { title, text, image, date, id } = card;
+  const navigate = useNavigate();
+
+  const onTitleClick = () => {
+    navigate(`/content/${id}`);
+  };
 
   const isLarge = size === CardSize.Large;
   const isMedium = size === CardSize.Medium;
@@ -82,6 +88,7 @@ const Card: FC<CardProps> = ({ card, size, isFromModal }) => {
                 [styles.smallTitle]: !isLarge,
                 [styles.whiteTitle]: theme === Theme.Dark,
               })}
+              onClick={onTitleClick}
             >
               {title}
             </div>

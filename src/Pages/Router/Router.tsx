@@ -16,8 +16,9 @@ export enum PathNames {
   RegistrationConfirmation = "/sign-up/confirm",
   RegistrationSuccess = "/sign-up/success",
   Search = "/search",
-  ContentPage = "/content",
+  ContentPage = "/content/:id",
   ResetPassword = "/reset",
+  ActivateUser = "/activate/:uid/:token",
 }
 
 const Router = () => {
@@ -33,7 +34,7 @@ const Router = () => {
             path={PathNames.RegistrationConfirmation}
             element={<RegistrationConfirm />}
           />
-          <Route path={PathNames.RegistrationSuccess} element={<Success />} />
+          <Route path={PathNames.ActivateUser} element={<Success />} />
           <Route path={PathNames.ResetPassword} element={<ResetPassword />} />
         </Route>
 
