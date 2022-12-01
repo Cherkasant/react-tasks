@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./Tab.module.css";
 import classnames from "classnames";
 import { useThemeContext } from "../../Context/Theme";
@@ -16,7 +16,7 @@ type TabProps = {
   disabled?: boolean;
 };
 
-const Tab: FC<TabProps> = ({ disabled, activeTab, onSelectTab }) => {
+const Tab: FC<TabProps> = ({ activeTab, onSelectTab }) => {
   const { theme } = useThemeContext();
 
   return (
@@ -33,6 +33,7 @@ const Tab: FC<TabProps> = ({ disabled, activeTab, onSelectTab }) => {
             className={classnames(styles.tab, {
               [styles.active]: tab.key === activeTab,
               [styles.disabled]: tab.key !== activeTab,
+              [styles.darkTab]: theme === Theme.Dark,
             })}
           >
             {tab.name}

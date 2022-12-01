@@ -31,6 +31,9 @@
 .darkContainer {
   background: #313037;
 }
+.darkTab:hover {
+  color: #2231AA !important;
+}
 .darkContainer .disabled {
   color: #ffffff;
 }

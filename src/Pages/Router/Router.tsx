@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Blog from "../Blog";
 import PagesWrapper from "../PagesWrapper";
 import RegistrationConfirm from "../RegistrationConfirm";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Success from "../Success";
 import ResetPassword from "../ResetPassword";
+import ContentPage from "../ContentPage";
 
 export enum PathNames {
   Home = "/",
@@ -25,11 +25,10 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path={PathNames.Home}></Route> */}
         <Route path={PathNames.Home} element={<PagesWrapper />}>
           <Route path={PathNames.SignIn} element={<SignIn />} />
           <Route path={PathNames.SignUp} element={<SignUp />} />
-          <Route path={PathNames.ContentPage} element={<Blog />} />
+          <Route path={PathNames.ContentPage} element={<ContentPage />} />
           <Route
             path={PathNames.RegistrationConfirmation}
             element={<RegistrationConfirm />}
