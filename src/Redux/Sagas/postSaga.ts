@@ -17,6 +17,18 @@ function* getPostsWorker(action: PayloadAction<undefined>) {
   }
 }
 
+function* getSinglePostWorker(action: PayloadAction<string>) {
+  const { ok, data, problem } = yield call(API.getSinglePost, action.payload);
+  if (ok && data) {
+    yield put(setSinglePost(data));
+  } else {
+    console.warn("Error fetching single post: ", problem);
+  }
+}
+
 export default function* postSagaWatcher() {
-  yield all([takeLatest(getPosts, getPostsWorker)]);
+  yield all([
+    takeLatest(getPosts, getPostsWorker),
+    takeLatest(getSinglePost, getSinglePostWorker),
+  ]);
 }
