@@ -6,8 +6,9 @@ import { CardType, Tabs } from "../../Constants/@types";
 import styles from "./Home.module.css";
 import SelectedPostModal from "./SelectedPostModal";
 import SelectedImageModal from "./SelectedImageModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PostsSelectors from "../../Redux/Selectors/postsSelectors";
+import { getPosts, setPosts } from "../../Redux/Reducers/postsReducer";
 
 const MOCK_CARD = {
   id: 0,
@@ -141,9 +142,11 @@ const MOCK_CARDS_LIST = [
 
 const Home = () => {
   const [cardsList, setCardsList] = useState<Array<CardType> | null>(null);
-
+  const dispatch = useDispatch();
+  const allPosts = useSelector(PostsSelectors.getAllPosts);
   useEffect(() => {
-    setCardsList(MOCK_CARDS_LIST);
+    // setCardsList(allPosts);
+    dispatch(getPosts());
   }, []);
 
   const [activeTab, setActiveTab] = useState(Tabs.All);
@@ -160,7 +163,7 @@ const Home = () => {
     } else if (activeTab === Tabs.Favourites) {
       return savedPosts;
     } else {
-      return cardsList;
+      return allPosts;
     }
   };
 

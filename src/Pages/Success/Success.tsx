@@ -1,16 +1,35 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Success.module.css';
-import FormContainer from '../../components/FormContainer';
-import Button, { ButtonTypes } from '../../components/button/Button';
-import classNames from 'classnames';
-import { useThemeContext } from '../../Context/Theme';
-import { Theme } from '../../Constants/@types';
+import styles from "./Success.module.css";
+import FormContainer from "../../components/FormContainer";
+import Button, { ButtonTypes } from "../../components/button/Button";
+import classNames from "classnames";
+import { useThemeContext } from "../../Context/Theme";
+import { Theme } from "../../Constants/@types";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { activateUser } from "../../Redux/Reducers/authReducer";
+import { PathNames } from "../Router/Router";
 
 const Success = () => {
   const { theme } = useThemeContext();
+  const { uid, token } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onConfirm = () => {
+    if (uid && token) {
+      dispatch(
+        activateUser({
+          data: { uid, token },
+          callback: () => {
+            navigate(PathNames.SignIn);
+          },
+        })
+      );
+    }
+  };
   return (
-    <FormContainer title={'Success'}>
+    <FormContainer title={"Success"}>
       <>
         <div className={styles.inputsContainer}>
           <div
@@ -18,13 +37,13 @@ const Success = () => {
               [styles.dark]: theme === Theme.Dark,
             })}
           >
-            {'Email confirmed.'}
-            <div>{'Your registration is now completed'}</div>
+            {"You need to confirm your email"}
+            <div>{"Please confirm"}</div>
           </div>
           <Button
-            title={'Go to home'}
+            title={"Confirm"}
             type={ButtonTypes.Primary}
-            onClick={() => {}}
+            onClick={onConfirm}
             className={styles.button}
           />
         </div>
