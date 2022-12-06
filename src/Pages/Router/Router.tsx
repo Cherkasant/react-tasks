@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PagesWrapper from "../PagesWrapper";
 import RegistrationConfirm from "../RegistrationConfirm";
@@ -7,6 +7,9 @@ import SignUp from "../SignUp";
 import Success from "../Success";
 import ResetPassword from "../ResetPassword";
 import ContentPage from "../ContentPage";
+import { useDispatch, useSelector } from "react-redux";
+import authSelectors from "../../Redux/Selectors/authSelectors";
+import { getUserName } from "../../Redux/Reducers/authReducer";
 
 export enum PathNames {
   Home = "/",
@@ -22,6 +25,13 @@ export enum PathNames {
 }
 
 const Router = () => {
+  const isLoggedIn = useSelector(authSelectors.getLoggedIn);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getUserName());
+    }
+  }, [isLoggedIn]);
   return (
     <BrowserRouter>
       <Routes>

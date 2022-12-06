@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   BurgerIcon,
   CloseIcon,
   LogInIcon,
   SearchIcon,
-} from '../../Assets/icons';
-import Button, { ButtonTypes } from '../button';
-import UserName from '../UserName';
-import styles from './Header.module.css';
-import Menu from './Menu';
-import { isLoggedIn } from './Menu/Menu';
-import { useNavigate } from 'react-router-dom';
-import { PathNames } from '../../Pages/Router/Router';
-import Input from '../input';
+} from "../../Assets/icons";
+import Button, { ButtonTypes } from "../button";
+import UserName from "../UserName";
+import styles from "./Header.module.css";
+import Menu from "./Menu";
+import { useNavigate } from "react-router-dom";
+import { PathNames } from "../../Pages/Router/Router";
+import Input from "../input";
+import { useSelector } from "react-redux";
+import authSelectors from "../../Redux/Selectors/authSelectors";
 
 const Header = () => {
   const [isOpened, setOpened] = useState(false);
@@ -30,12 +31,14 @@ const Header = () => {
     setSearchClick(!isClickedSearch);
   };
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const onChange = (value: string) => {
     setInputValue(value);
   };
 
+  const isLoggedIn = useSelector(authSelectors.getLoggedIn);
+  const userName = useSelector(authSelectors.getUserName);
   return (
     <div className={styles.container}>
       <Button
@@ -50,9 +53,9 @@ const Header = () => {
           <Input
             value={inputValue}
             onChange={onChange}
-            placeholder={'Search...'}
+            placeholder={"Search..."}
             className={styles.customInput}
-            type={'Search'}
+            type={"Search"}
           />
         )}
       </div>
@@ -64,8 +67,8 @@ const Header = () => {
           className={styles.searchButton}
           onClick={clickedSearchButton}
         />
-        {isLoggedIn ? (
-          <UserName username={'Artem_Malkin'} />
+        {isLoggedIn && !!UserName ? (
+          <UserName username={userName} />
         ) : (
           <Button
             title={<LogInIcon />}
