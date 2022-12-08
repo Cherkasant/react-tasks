@@ -2,6 +2,7 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 import {
   activateUser,
   getUserName,
+  logoutUser,
   registerUser,
   setLoggedIn,
   setUserName,
@@ -12,11 +13,9 @@ import {
   ActivateUserPayload,
   RegisterUserPayload,
   SignInUserPayload,
-  SignInUserData,
 } from "../Types/auth";
 import API from "../utils/api";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../Constants/consts";
-import { setSinglePost } from "../Reducers/postsReducer";
 
 function* registerUserWorker(action: PayloadAction<RegisterUserPayload>) {
   const { data: registerData, callback } = action.payload;
@@ -60,11 +59,18 @@ function* getUserNameWorker() {
   }
 }
 
+function* logOutUserWorker() {
+  yield put(setLoggedIn(true));
+  localStorage.removeItem(ACCESS_TOKEN_KEY);
+  localStorage.removeItem(REFRESH_TOKEN_KEY);
+}
+
 export default function* authSagaWatcher() {
   yield all([
     takeLatest(registerUser, registerUserWorker),
     takeLatest(activateUser, activateUserWorker),
     takeLatest(signInUser, signInUserWorker),
     takeLatest(getUserName, getUserNameWorker),
+    takeLatest(logoutUser, logOutUserWorker),
   ]);
 }

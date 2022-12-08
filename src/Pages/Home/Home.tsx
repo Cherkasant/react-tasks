@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import CardList from "../../components/CardList";
 import Tab from "../../components/tab";
 import Title from "../../components/title";
@@ -9,6 +9,7 @@ import SelectedImageModal from "./SelectedImageModal";
 import { useDispatch, useSelector } from "react-redux";
 import PostsSelectors from "../../Redux/Selectors/postsSelectors";
 import { getPosts } from "../../Redux/Reducers/postsReducer";
+import authSelectors from "../../Redux/Selectors/authSelectors";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Home = () => {
 
   const likedPosts = useSelector(PostsSelectors.getLikedPosts);
   const savedPosts = useSelector(PostsSelectors.getSavedPosts);
+  const isLoggedIn = useSelector(authSelectors.getLoggedIn);
 
   const cardsArray = () => {
     if (activeTab === Tabs.Popular) {
@@ -35,10 +37,28 @@ const Home = () => {
     }
   };
 
+  const TABS_NAMES = useMemo(
+    () => [
+      { name: "All", key: Tabs.All },
+      ...(isLoggedIn
+        ? [
+            { name: "My Favourites", key: Tabs.Favourites },
+            { name: "My Posts", key: Tabs.MyPosts },
+          ]
+        : []),
+      { name: "Popular", key: Tabs.Popular },
+    ],
+    [isLoggedIn]
+  );
+
   return (
     <div className={styles.container}>
       <Title name={"Blog"} className={styles.titleMargin} />
-      <Tab activeTab={activeTab} onSelectTab={onTabCLick} />
+      <Tab
+        activeTab={activeTab}
+        onSelectTab={onTabCLick}
+        tabsList={TABS_NAMES}
+      />
       <CardList cardsList={cardsArray()} />
       <SelectedPostModal />
       <SelectedImageModal />
