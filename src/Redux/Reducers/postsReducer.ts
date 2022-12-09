@@ -16,6 +16,10 @@ type PostReducerState = {
   savedPosts: CardListType;
   allPosts: CardListType;
   singePost: CardType | null;
+  isPostLoading: boolean;
+  isSinglePostLoading: boolean;
+  myPosts: CardListType;
+  isMyPostLoading: boolean;
 };
 
 const initialState: PostReducerState = {
@@ -28,6 +32,10 @@ const initialState: PostReducerState = {
   savedPosts: [],
   allPosts: [],
   singePost: null,
+  isPostLoading: false,
+  isSinglePostLoading: false,
+  isMyPostLoading: false,
+  myPosts: [],
 };
 
 const postsSlice = createSlice({
@@ -88,12 +96,25 @@ const postsSlice = createSlice({
         : state.savedPosts.splice(savedPostsIndex, 1);
     },
     getPosts: (state, action: PayloadAction<undefined>) => {},
+    setPostsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isPostLoading = action.payload;
+    },
     setPosts: (state, action: PayloadAction<CardListType>) => {
       state.allPosts = action.payload;
     },
     getSinglePost: (state, action: PayloadAction<string>) => {},
+    setSinglePostLoading: (state, action: PayloadAction<boolean>) => {
+      state.isSinglePostLoading = action.payload;
+    },
     setSinglePost: (state, action: PayloadAction<CardType>) => {
       state.singePost = action.payload;
+    },
+    getMyPosts: (state, action: PayloadAction<undefined>) => {},
+    setMyPostsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isMyPostLoading = action.payload;
+    },
+    setMyPosts: (state, action: PayloadAction<CardListType>) => {
+      state.myPosts = action.payload;
     },
   },
 });
@@ -109,6 +130,11 @@ export const {
   setPosts,
   getSinglePost,
   setSinglePost,
+  setPostsLoading,
+  setSinglePostLoading,
+  getMyPosts,
+  setMyPostsLoading,
+  setMyPosts,
 } = postsSlice.actions;
 const postsReducer = postsSlice.reducer;
 export default postsReducer;

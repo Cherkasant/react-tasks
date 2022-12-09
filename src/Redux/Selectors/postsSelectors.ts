@@ -12,4 +12,9 @@ export default {
   getSavedPosts: (state: RootState) => state.postsReducer.savedPosts,
   getAllPosts: (state: RootState) => state.postsReducer.allPosts,
   getSinglePost: (state: RootState) => state.postsReducer.singePost,
+  getPostLoading: (state: RootState) => state.postsReducer.isPostLoading,
+  getSinglePostLoading: (state: RootState) =>
+    state.postsReducer.isSinglePostLoading,
+  getMyPosts: (state: RootState) => state.postsReducer.myPosts,
+  getMyPostsLoading: (state: RootState) => state.postsReducer.isMyPostLoading,
 };

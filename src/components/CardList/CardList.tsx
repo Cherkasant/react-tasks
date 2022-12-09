@@ -1,11 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from "react";
 
-import styles from './CardList.module.css';
-import { CardListType, Theme } from '../../Constants/@types';
-import Card from '../Card';
-import { CardSize } from '../Card/Card';
-import classnames from 'classnames';
-import { useThemeContext } from '../../Context/Theme';
+import styles from "./CardList.module.css";
+import { CardListType, Theme } from "../../Constants/@types";
+import Card from "../Card";
+import { CardSize } from "../Card/Card";
+import classnames from "classnames";
+import { useThemeContext } from "../../Context/Theme";
+import EmptyState from "../EmptyState";
 
 type CardListProps = {
   cardsList: CardListType | null;
@@ -37,7 +38,9 @@ const CardList: FC<CardListProps> = ({ cardsList }) => {
         })}
       </div>
     </div>
-  ) : null;
+  ) : (
+    <EmptyState />
+  );
 };
 
 export default CardList;

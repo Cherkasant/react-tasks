@@ -16,6 +16,7 @@ import {
 } from "../Types/auth";
 import API from "../utils/api";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../Constants/consts";
+import callCheckingAuth from "./callCheckingAuth";
 
 function* registerUserWorker(action: PayloadAction<RegisterUserPayload>) {
   const { data: registerData, callback } = action.payload;
@@ -50,8 +51,7 @@ function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
 }
 
 function* getUserNameWorker() {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY) || "";
-  const { ok, data, problem } = yield call(API.getUserName, accessToken);
+  const { ok, data, problem } = yield callCheckingAuth(API.getUserName);
   if (ok && data) {
     yield put(setUserName(data.username));
   } else {
@@ -60,7 +60,7 @@ function* getUserNameWorker() {
 }
 
 function* logOutUserWorker() {
-  yield put(setLoggedIn(true));
+  yield put(setLoggedIn(false));
   localStorage.removeItem(ACCESS_TOKEN_KEY);
   localStorage.removeItem(REFRESH_TOKEN_KEY);
 }

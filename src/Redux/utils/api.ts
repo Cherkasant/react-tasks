@@ -29,6 +29,21 @@ const getUserName = (token: string) => {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 };
+const getNewAccessToken = (refresh: string) => {
+  return API.post("/auth/jwt/refresh/", { refresh });
+};
+
+const verifyToken = (token: string) => {
+  return API.post("/auth/jwt/verify/", { token });
+};
+
+const getMyPosts = (token: string) => {
+  return API.get(
+    "/blog/posts/my_posts/",
+    {},
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+};
 
 export default {
   registerUser,
@@ -37,4 +52,7 @@ export default {
   getSinglePost,
   signInUser,
   getUserName,
+  getNewAccessToken,
+  verifyToken,
+  getMyPosts,
 };
