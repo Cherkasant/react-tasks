@@ -5,6 +5,7 @@ import RegistrationConfirm from "../RegistrationConfirm";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Success from "../Success";
+import SearchPage from "../SearchPage";
 import ResetPassword from "../ResetPassword";
 import ContentPage from "../ContentPage";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +19,7 @@ export enum PathNames {
   SignUp = "/sign-up",
   RegistrationConfirmation = "/sign-up/confirm",
   RegistrationSuccess = "/sign-up/success",
-  Search = "/search",
+  Search = "/search/:searchString",
   ContentPage = "/content/:id",
   ResetPassword = "/reset",
   ActivateUser = "/activate/:uid/:token",
@@ -45,6 +46,7 @@ const Router = () => {
           />
           <Route path={PathNames.ActivateUser} element={<Success />} />
           <Route path={PathNames.ResetPassword} element={<ResetPassword />} />
+          <Route path={PathNames.Search} element={<SearchPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to={PathNames.SignIn} />} />

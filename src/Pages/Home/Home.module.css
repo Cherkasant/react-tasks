@@ -6,3 +6,45 @@
 .titleMargin {
   margin-bottom: 40px;
 }
+
+.previousBlock,.nextBlock {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #313037;
+  cursor: pointer;
+}
+.previousBlock:hover,.nextBlock:hover {
+  color: #2231AA;
+}
+.page {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+.page:hover {
+  color: #2231AA;
+}
+.activePage {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  color: #2231AA;
+}
+.paginationBlock {
+  margin:72px 0 72px 0;
+  display: flex;
+  gap:5px;
+  justify-content: space-between;
+}
+.orderingBlock {
+  display: flex;
+  gap:10px;
+  padding: 10px;
+}
+
+.clicked {
+  background-color:red;
+}

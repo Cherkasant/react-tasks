@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-
 import styles from "./SignIn.module.css";
 import FormContainer from "../../components/FormContainer";
 import Input from "../../components/input/Input";
 import Button, { ButtonTypes } from "../../components/button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { PathNames } from "../Router/Router";
-import { useThemeContext } from "../../Context/Theme";
 import { useDispatch } from "react-redux";
 import { signInUser } from "../../Redux/Reducers/authReducer";
 

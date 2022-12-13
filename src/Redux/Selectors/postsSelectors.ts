@@ -17,4 +17,5 @@ export default {
     state.postsReducer.isSinglePostLoading,
   getMyPosts: (state: RootState) => state.postsReducer.myPosts,
   getMyPostsLoading: (state: RootState) => state.postsReducer.isMyPostLoading,
+  getTotalCount: (state: RootState) => state.postsReducer.totalCount,
 };

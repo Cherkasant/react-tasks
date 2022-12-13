@@ -5,6 +5,7 @@ import {
   LikeStatus,
   SetLikeStatusPayload,
 } from "../../Constants/@types";
+import { GetPostsPayload } from "../Types/posts";
 
 type PostReducerState = {
   selectedPost: CardType | null;
@@ -20,6 +21,7 @@ type PostReducerState = {
   isSinglePostLoading: boolean;
   myPosts: CardListType;
   isMyPostLoading: boolean;
+  totalCount: number;
 };
 
 const initialState: PostReducerState = {
@@ -36,6 +38,7 @@ const initialState: PostReducerState = {
   isSinglePostLoading: false,
   isMyPostLoading: false,
   myPosts: [],
+  totalCount: 0,
 };
 
 const postsSlice = createSlice({
@@ -95,7 +98,7 @@ const postsSlice = createSlice({
         ? state.savedPosts.push(card)
         : state.savedPosts.splice(savedPostsIndex, 1);
     },
-    getPosts: (state, action: PayloadAction<undefined>) => {},
+    getPosts: (state, action: PayloadAction<GetPostsPayload>) => {},
     setPostsLoading: (state, action: PayloadAction<boolean>) => {
       state.isPostLoading = action.payload;
     },
@@ -116,6 +119,9 @@ const postsSlice = createSlice({
     setMyPosts: (state, action: PayloadAction<CardListType>) => {
       state.myPosts = action.payload;
     },
+    setTotalCount: (state, action: PayloadAction<number>) => {
+      state.totalCount = action.payload;
+    },
   },
 });
 
@@ -135,6 +141,7 @@ export const {
   getMyPosts,
   setMyPostsLoading,
   setMyPosts,
+  setTotalCount,
 } = postsSlice.actions;
 const postsReducer = postsSlice.reducer;
 export default postsReducer;
