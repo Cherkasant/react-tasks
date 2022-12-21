@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BookmarkIcon, DownIcon, UpIcon } from "../../Assets/icons";
 import Button, { ButtonTypes } from "../../components/button";
 import Title from "../../components/title";
@@ -11,6 +11,7 @@ import { PathNames } from "../Router/Router";
 import { useThemeContext } from "../../Context/Theme";
 import classNames from "classnames";
 import { Theme } from "../../Constants/@types";
+import Loader from "../../components/Loader";
 
 const ContentPage = () => {
   const { theme } = useThemeContext();
@@ -25,8 +26,8 @@ const ContentPage = () => {
   }, []);
 
   const card = useSelector(postsSelectors.getSinglePost);
-
-  return card ? (
+  const isLoadingSinglePage = useSelector(postsSelectors.getSinglePostLoading);
+  return card && !isLoadingSinglePage ? (
     <div className={styles.container}>
       <div className={styles.headerContainer}>
         <div className={styles.postContainer}>
@@ -73,7 +74,9 @@ const ContentPage = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <Loader />
+  );
 };
 
 export default ContentPage;

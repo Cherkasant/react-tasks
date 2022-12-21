@@ -6,8 +6,9 @@ import styles from "./Menu.module.css";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import UserName from "../../UserName";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authSelectors from "../../../Redux/Selectors/authSelectors";
+import { logoutUser } from "../../../Redux/Reducers/authReducer";
 
 export const Menu = () => {
   const isLoggedIn = useSelector(authSelectors.getLoggedIn);
@@ -20,9 +21,14 @@ export const Menu = () => {
   );
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onFooterButtonClick = () => {
-    navigate(PathNames.SignIn);
+    if (isLoggedIn) {
+      dispatch(logoutUser());
+    } else {
+      navigate(PathNames.SignIn);
+    }
   };
 
   const { pathname } = useLocation();
