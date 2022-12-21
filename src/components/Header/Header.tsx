@@ -28,6 +28,9 @@ const Header = () => {
 
   const [isClickedSearch, setSearchClick] = useState(false);
   const clickedSearchButton = () => {
+    if (isClickedSearch) {
+      navigate(`search/${inputValue}`);
+    }
     setSearchClick(!isClickedSearch);
   };
 

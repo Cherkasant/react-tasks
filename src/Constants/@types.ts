@@ -30,3 +30,8 @@ export enum Tabs {
   Popular = "popular",
   MyPosts = "MyPosts",
 }
+
+export enum Order {
+  Date = "date",
+  Title = "title",
+}
